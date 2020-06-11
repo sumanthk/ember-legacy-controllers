@@ -14,7 +14,7 @@ function generateControllerFactory(owner, controllerName, context) {
 
   let factoryName = `controller:${controllerType}`;
 
-  let Factory = owner._lookupFactory(factoryName).extend({
+  let Factory = owner.lookupFactory(factoryName).extend({
     isGenerated: true,
     toString() {
       return `(generated ${controllerName} controller)`;
@@ -23,7 +23,7 @@ function generateControllerFactory(owner, controllerName, context) {
 
   let fullName = `controller:${controllerName}`;
 
-  owner.register(fullName, Factory);
+  owner.registry.register(fullName, Factory);
 
   return Factory;
 }
